@@ -1,0 +1,34 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: white;
+}
+.app .header {
+  display: flex;
+  border-bottom: 5px solid #f44336;
+  padding: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.app .header .heading {
+  padding: 10px;
+  text-align: center;
+  color: #3D3A3A;
+  font-weight: 900;
+  margin-right: auto;
+}
+.app .header .sheet-link {
+  margin-left: auto;
+  color: #2196f3;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.app .options {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+}
+
+/*# sourceMappingURL=header.css.map */

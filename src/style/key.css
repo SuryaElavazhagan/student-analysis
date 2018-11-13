@@ -1,0 +1,26 @@
+.keyholder {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 10px 0px;
+}
+@media only screen and (max-device-width: 500px) {
+  .keyholder {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+.keyholder .keytitle {
+  font: normal 10px sans-serif;
+  cursor: pointer;
+  margin: 3px;
+}
+.keyholder .colorbox {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  margin-right: 3px;
+}
+
+/*# sourceMappingURL=key.css.map */

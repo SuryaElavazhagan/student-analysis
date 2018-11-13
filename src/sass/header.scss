@@ -1,0 +1,34 @@
+@import '_variables';
+
+.app{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: white;
+    .header{
+        display: flex;
+        border-bottom: 5px solid $red;
+        padding: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        .heading{
+            padding: 10px;
+            text-align: center;
+            color: #3D3A3A;
+            font-weight: 900;
+            margin-right: auto;
+        }
+        .sheet-link{
+            margin-left: auto;
+            color: $blue;
+            padding: 10px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    }
+    .options{
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: auto;
+    }
+}

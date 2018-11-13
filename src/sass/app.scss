@@ -1,0 +1,43 @@
+@import '_variables';
+
+.container{
+    .wrapper{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        .display{
+            flex-grow: 1;
+            .charts{
+                background-color: $light_grey;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                .chart{
+                    cursor: pointer;
+                }
+                .counter{
+                    flex-grow: 10;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    @media only screen and (max-device-width: 500px){
+                        flex-direction: column;
+                    }
+                }
+                .key{
+                    margin: 10px 0px;
+                    display: flex;
+                    flex-direction: column-reverse;
+                    justify-content: space-around;
+                }
+            }
+        }
+        .tableholder{
+            flex-grow: 1;
+            height: 100vh;
+            padding: 10px;
+            align-items: center;
+            overflow: scroll;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+.toggle{
+    display: flex;
+    padding: 5px;
+    cursor: pointer;
+    justify-content: center;
+    rect{
+        &:hover{
+            box-shadow: 0px 0px 2px grey;
+        }
+    }
+    .option{
+        margin: 5px;
+    }
+}

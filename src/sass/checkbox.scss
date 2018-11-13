@@ -1,0 +1,11 @@
+.checkbox{
+    display: inline-block;
+    margin-left: 5px;
+    margin-top: 2px;
+    .checkbox-option{
+        padding: 2px;
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+    }
+}

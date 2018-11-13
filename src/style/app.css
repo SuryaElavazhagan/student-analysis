@@ -1,0 +1,43 @@
+.container .wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.container .wrapper .display {
+  flex-grow: 1;
+}
+.container .wrapper .display .charts {
+  background-color: #eeeeee;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.container .wrapper .display .charts .chart {
+  cursor: pointer;
+}
+.container .wrapper .display .charts .counter {
+  flex-grow: 10;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+@media only screen and (max-device-width: 500px) {
+  .container .wrapper .display .charts .counter {
+    flex-direction: column;
+  }
+}
+.container .wrapper .display .charts .key {
+  margin: 10px 0px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-around;
+}
+.container .wrapper .tableholder {
+  flex-grow: 1;
+  height: 100vh;
+  padding: 10px;
+  align-items: center;
+  overflow: scroll;
+}
+
+/*# sourceMappingURL=app.css.map */

@@ -1,0 +1,14 @@
+.toggle {
+  display: flex;
+  padding: 5px;
+  cursor: pointer;
+  justify-content: center;
+}
+.toggle rect:hover {
+  box-shadow: 0px 0px 2px grey;
+}
+.toggle .option {
+  margin: 5px;
+}
+
+/*# sourceMappingURL=toggle.css.map */
