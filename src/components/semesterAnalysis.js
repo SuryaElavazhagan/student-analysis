@@ -174,7 +174,7 @@ class SemesterAnalysis extends Component {
                     } >
                     <
                     option value = {-1
-                    } > Select a semester < /option> {
+                    } > Select a category < /option> {
                     options.map((data, index) => ( <
                         option key = {
                             index
@@ -187,7 +187,7 @@ class SemesterAnalysis extends Component {
                     ))
                 } <
                 /select> < /
-                center > {
+            center > {
                     (this.state.selectedCategory !== '' && this.state.selectedCategory >= 0) ? ( <
                         center >
                         <
@@ -208,7 +208,7 @@ class SemesterAnalysis extends Component {
                     /> : null
                 } <
                 /center> < /
-                div > <
+            div > <
                 /div>
         )
     }
@@ -246,7 +246,7 @@ render() {
                 )
             } <
             /select> < /
-            center >
+        center >
 
             <
             div className = "charts" >
@@ -272,7 +272,7 @@ center > {
         /> : null
     } <
     /center> < /
-    div > {
+div > {
         this.renderTable()
     } <
     /div>
