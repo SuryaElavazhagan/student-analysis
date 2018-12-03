@@ -1,0 +1,38 @@
+export const MARK_LIMIT = {
+    ABOVE_AVERAGE: 'ABOVE_AVERAGE',
+    AVERAGE: 'AVERAGE',
+    BELOW_AVERAGE: 'BELOW_AVERAGE',
+    EXCELLENCE: 'EXCELLENCE'
+}
+
+export const SEMESTER = {
+    SEMESTER_FIVE: 'SEMESTER_FIVE',
+    SEMESTER_FOUR: 'SEMESTER_FOUR',
+    SEMESTER_ONE: 'SEMESTER_ONE',
+    SEMESTER_THREE: 'SEMESTER_THREE',
+    SEMESTER_TWO: 'SEMESTER_TWO'
+}
+
+export const CASTE = {
+    BC: 'BC',
+    FC: 'FC',
+    MBC: 'MBC',
+    OC: 'OC',
+    SC: 'SC',
+    ST: 'ST'
+}
+
+export const GENDERS = {
+    FEMALE: 'FEMALE',
+    MALE: 'MALE'
+}
+
+export const BOARDS = {
+    CBSE: 'CBSE',
+    STATE: 'STATE'
+}
+
+export const ARREAR_CATEGORY = {
+    HISTORY_OF_ARREARS: 'HISTORY_OF_ARREARS',
+    STANDING_ARREARS: 'STANDING_ARREARS'
+}
