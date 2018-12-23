@@ -6,11 +6,12 @@ const filter: IFilter = {
     arrearCategory: '',
     board: '',
     cachedArray: [],
-    caste: [],
+    caste: '',
     gender: '',
     highSchoolFilter: '',
+    isLoaded: false,
     secondarySchoolFilter: '',
-    semester: ''
+    semester: 1,
 };
 
 const persistedState: IStoreState = {

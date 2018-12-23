@@ -21,15 +21,21 @@ export default class NavBar extends React.Component<IProps, IState> {
         this.setState({
             showOptions: !this.state.showOptions
         })
+
+        document.querySelector('button[aria-label="Toggle navigation"]')!
+        .setAttribute('aria-expanded', `${this.state.showOptions}`);
     }
 
     public hideToggle = () => {
         this.setState({
             showOptions: false
         })
+
+        document.querySelector('button[aria-label="Toggle navigation"]')!
+            .setAttribute('aria-expanded', `${this.state.showOptions}`);
     }
 
-    public render(){
+    public render() {
         return(
             <div>
                 <nav className="navbar navbar-dark bg-dark" >
@@ -46,15 +52,12 @@ export default class NavBar extends React.Component<IProps, IState> {
                             onClick={ this.handleToggle }>
                         <span className="navbar-toggler-icon"/>
                     </button>
-                </nav>
-                {
-                    this.state.showOptions ? (
-                        <Options
-                            options={ this.props.options }
-                            toggleOptions={ this.handleToggle }
-                            />
-                    ): null
-                }
+                </nav>                
+                <Options
+                    options={ this.props.options }
+                    toggleOptions={ this.handleToggle }
+                    show={ this.state.showOptions }
+                />
             </div>
         )
     }

@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import CasteClassification from "./components/CasteClassification";
 import NavBar from "./components/NavBar";
 import NonAcademicData from "./components/NonAcademicData";
-import StudentAnalysis from "./components/StudentAnalysis";
 import Welcome from "./components/Welcome";
 import ArrearAnalysis from "./containers/ArrearAnalysis";
 import SemesterAnalysis from "./containers/SemesterAnalysis";
+import StudentAnalysis from "./containers/StudentAnalysis";
 
 interface IState {
   toggleOption: boolean;

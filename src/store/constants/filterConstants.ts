@@ -30,7 +30,7 @@ export type SET_CASTE = typeof SET_CASTE;
 
 export interface ICASTE {
     key: number;
-    caste: string[];
+    caste: string;
     type: SET_CASTE;
 }
 
@@ -39,7 +39,7 @@ export type SET_SEMESTER = typeof SET_SEMESTER;
 
 export interface ISEMESTER {
     key: number;
-    semester: string;
+    semester: number;
     type: SET_SEMESTER;
 }
 
@@ -68,4 +68,13 @@ export interface ICACHEDARRAY {
     cachedArray: any[];
     key: number;
     type: SET_CACHED_ARRAY;
+}
+
+export const SET_DATA_LOADED = 'SET_DATA_LOADED';
+export type SET_DATA_LOADED = typeof SET_DATA_LOADED;
+
+export interface IDATALOADED {
+    type: SET_DATA_LOADED;
+    key: number;
+    isLoaded: boolean;
 }

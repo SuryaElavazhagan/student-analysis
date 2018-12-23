@@ -18,13 +18,13 @@ export const setArrearFilter = (key: number, arrearCategory : string): constants
     type: constants.SET_ARREAR_CATEGORY
 })
 
-export const setCasteFilter = (key: number, caste : string[]): constants.ICASTE => ({
+export const setCasteFilter = (key: number, caste : string): constants.ICASTE => ({
     caste,
     key,
     type: constants.SET_CASTE
 })
 
-export const setSemesterFilter = (key: number, semester : string): constants.ISEMESTER => ({
+export const setSemesterFilter = (key: number, semester : number): constants.ISEMESTER => ({
     key,
     semester,
     type: constants.SET_SEMESTER
@@ -48,6 +48,12 @@ export const setCachedArray = (key: number, cachedArray : any[]): constants.ICAC
     type: constants.SET_CACHED_ARRAY
 })
 
+export const setDataLoaded = (key: number, isLoaded: boolean): constants.IDATALOADED => ({
+    isLoaded,
+    key,
+    type: constants.SET_DATA_LOADED
+})
+
 export type SET_FILTERS = (constants.IGENDERS |
                         constants.IARREARCATEGORY |
                         constants.IBOARD |
@@ -55,4 +61,5 @@ export type SET_FILTERS = (constants.IGENDERS |
                         constants.ISEMESTER |
                         constants.IHSCMARKLIMIT |
                         constants.ISSLCMARKLIMIT |
+                        constants.IDATALOADED |
                         constants.ICACHEDARRAY);

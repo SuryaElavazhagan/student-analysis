@@ -1,5 +1,5 @@
 import { SET_FILTERS } from "../actions/filterActions";
-import { SET_ARREAR_CATEGORY, SET_BOARD, SET_CACHED_ARRAY, SET_CASTE, SET_GENDER, SET_HSC_MARK_LIMIT, SET_SSLC_MARK_LIMIT } from "../constants/filterConstants";
+import { SET_ARREAR_CATEGORY, SET_BOARD, SET_CACHED_ARRAY, SET_CASTE, SET_DATA_LOADED, SET_GENDER, SET_HSC_MARK_LIMIT, SET_SEMESTER, SET_SSLC_MARK_LIMIT } from '../constants/filterConstants';
 import { IFilter } from '../types';
 
 export const filtersReducer = (state: IFilter[] = [], action: SET_FILTERS): IFilter[] => {
@@ -8,44 +8,57 @@ export const filtersReducer = (state: IFilter[] = [], action: SET_FILTERS): IFil
         case SET_ARREAR_CATEGORY:
             tempFilter = {
                 ...state[action.key],
-                arrearCategory: action.arrearCategory
-            }
+                arrearCategory: action.arrearCategory,
+            };
             break;
         case SET_BOARD:
             tempFilter = {
                 ...state[action.key],
-                board: action.board
-            }
+                board: action.board,
+            };
             break;
         case SET_GENDER:
             tempFilter = {
                 ...state[action.key],
-                gender: action.gender
-            }
+                gender: action.gender,
+            };
             break;
         case SET_CASTE:
             tempFilter = {
                 ...state[action.key],
-                caste: action.caste
-            }
+                caste: action.caste,
+            };
             break;
         case SET_HSC_MARK_LIMIT:
             tempFilter = {
                 ...state[action.key],
-                highSchoolFilter: action.markLimit
-            }
+                highSchoolFilter: action.markLimit,
+            };
             break;
         case SET_SSLC_MARK_LIMIT:
             tempFilter = {
                 ...state[action.key],
-                secondarySchoolFilter: action.markLimit
-            }
+                secondarySchoolFilter: action.markLimit,
+            };
             break;
         case SET_CACHED_ARRAY:
             tempFilter = {
                 ...state[action.key],
-                cachedArray: action.cachedArray
-            }
+                cachedArray: action.cachedArray,
+            };
+            break;
+        case SET_SEMESTER:
+            tempFilter = {
+                ...state[action.key],
+                semester: action.semester,
+            };
+            break;
+        case SET_DATA_LOADED:
+            tempFilter = {
+                ...state[action.key],
+                isLoaded: action.isLoaded,
+            };
+            break;
         default:
             return state;
     }
@@ -56,4 +69,3 @@ export const filtersReducer = (state: IFilter[] = [], action: SET_FILTERS): IFil
         ...state.slice(action.key + 1)
     ]
 }
-

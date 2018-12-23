@@ -1,65 +1,77 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import { renderBarChart } from 'src/charts/barChart';
 import Filters from 'src/components/Filters';
 import { IFilter, IStoreState } from 'src/store/types';
-import { apiCall } from "../api/sheets";
+import api from "../api/APICalls";
 import Layout from '../components/Layout';
+import { setCachedArray, setDataLoaded } from '../store/actions/filterActions';
 import Chart from './Chart';
 
 interface ISemesterAnalysisProps {
     semesterFilter: IFilter;
+    setCategorizedData: (data: number[][]) => void;
 }
 
-function SemesterAnalysis({ semesterFilter }: ISemesterAnalysisProps) {
+function SemesterAnalysis({ semesterFilter, setCategorizedData }: ISemesterAnalysisProps) {
     
     async function fetchSemesterMarks() {
-        const ALL_SEMESTER_RANGE = 'CSE!S2:W110';
-        const results: number[][] = await apiCall(ALL_SEMESTER_RANGE);
-        const semesterOne = results.map(d => d[0]);
-        const categorizedData: number[][] = [[], [], [], [], [], [], []];
-
-        for (let i = 0; i < semesterOne.length; i++) {
-            if (semesterOne[i] >= 5 && semesterOne[i] < 6) {
-                categorizedData[0].push(i);
+        if(!semesterFilter.isLoaded) {
+            const currentSemester = await api.fetchMarks('semester', semesterFilter.semester - 1);
+            
+            const categorizedData: number[][] = [[], [], [], [], [], [], []];
+    
+            for (let i = 0; i < currentSemester.length; i++) {
+                if (currentSemester[i] >= 5 && currentSemester[i] < 6) {
+                    categorizedData[0].push(i);
+                }
+                if (currentSemester[i] >= 6 && currentSemester[i] < 6.5) {
+                    categorizedData[1].push(i);
+                }
+                if (currentSemester[i] >= 6.5 && currentSemester[i] < 7) {
+                    categorizedData[2].push(i);
+                }
+                if (currentSemester[i] >= 7 && currentSemester[i] < 7.5) {
+                    categorizedData[3].push(i);
+                }
+                if (currentSemester[i] >= 7.5 && currentSemester[i] < 8) {
+                    categorizedData[4].push(i);
+                }
+                if (currentSemester[i] >= 8 && currentSemester[i] < 8.5) {
+                    categorizedData[5].push(i);
+                }
+                if (currentSemester[i] >= 8.5 && currentSemester[i] < 9) {
+                    categorizedData[6].push(i);
+                }
             }
-            if (semesterOne[i] >= 6 && semesterOne[i] < 6.5) {
-                categorizedData[1].push(i);
-            }
-            if (semesterOne[i] >= 6.5 && semesterOne[i] < 7) {
-                categorizedData[2].push(i);
-            }
-            if (semesterOne[i] >= 7 && semesterOne[i] < 7.5) {
-                categorizedData[3].push(i);
-            }
-            if (semesterOne[i] >= 7.5 && semesterOne[i] < 8) {
-                categorizedData[4].push(i);
-            }
-            if (semesterOne[i] >= 8 && semesterOne[i] < 8.5) {
-                categorizedData[5].push(i);
-            }
-            if (semesterOne[i] >= 8.5 && semesterOne[i] < 9) {
-                categorizedData[6].push(i);
-            }
+            setCategorizedData(categorizedData);
         }
-
-        renderBarChart(categorizedData.map(d => d.length), 'chart');
+        renderBarChart(semesterFilter.cachedArray.map(d => d.length), 'chart');
     }
-
     return(
         <Layout
         Title='Semester Analysis'
         Content={
-            <Chart chartLogic={fetchSemesterMarks} />
+            <Chart chartLogic={fetchSemesterMarks} isDataLoaded={semesterFilter.isLoaded}/>
         }
         Filter={
-            <Filters filterKey={0} filters={['Board', 'Gender', 'Caste', 'Semester', 'SSLC Filter', 'HSC Filter']}/>
+            <Filters filterKey={0}
+                filters={['Board', 'Gender', 'Caste', 'Semester', 'SSLC Filter', 'HSC Filter']}/>
         }/>
     )
+
 }
 
 const mapStateToProps = (state: IStoreState) => ({
-    semesterFilter: state.filters[0]
-})
+    semesterFilter: state.filters[0],
+});
 
-export default connect(mapStateToProps, null)(SemesterAnalysis);
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    setCategorizedData(data: number[][]) {
+        dispatch(setCachedArray(0, data));
+        dispatch(setDataLoaded(0, true));
+    },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SemesterAnalysis);

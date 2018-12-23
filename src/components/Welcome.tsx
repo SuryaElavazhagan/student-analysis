@@ -1,5 +1,9 @@
 import * as React from "react";
 
+/**
+ * Usual welcome message component
+ */
+
 export default function Welcome(){
     return(
         <div className="jumbotron">

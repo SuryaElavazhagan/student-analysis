@@ -2,11 +2,10 @@ import * as d3 from "d3";
 
 
 export function renderBarChart(data: number[], root: string): void{
-    const rootElement = document.getElementById(root);
     
     d3.select(`#${root}`).select('svg').remove();
 
-    const width = rootElement!.clientWidth;
+    const width = window.innerWidth <= 400 ? window.innerWidth : 400;
     const height = 400;
     
     const margin = {
@@ -16,6 +15,8 @@ export function renderBarChart(data: number[], root: string): void{
         top: 10
     }
 
+    const domains = ['5-6', '6-6.5', '6.5-7', '7-7.5', '7.5-8', '8-8.5', '8.5-9'];
+    const color = d3.scaleOrdinal(d3.schemeCategory10);
     const barWidth = Math.floor(width / data.length) - 20;
 
     const xScale = d3.scaleLinear()
@@ -23,15 +24,13 @@ export function renderBarChart(data: number[], root: string): void{
                     .range([margin.left + margin.right, width - margin.left - margin.right]);
 
     const yScale = d3.scaleLinear()
-                    .domain([0, Math.max(
-                        ...data
-                    )])
+                    .domain([0, Math.max.apply(null, data)])
                     .range([height - margin.top - margin.bottom, margin.top]);
 
     const xAxis = d3.axisBottom(xScale);
     const yAxis = d3.axisLeft(yScale);
 
-    const svg = d3.select(rootElement)
+    const svg = d3.select(`#${root}`)
                     .append('svg')
                     .attr('width', width)
                     .attr('height', height);
@@ -45,6 +44,7 @@ export function renderBarChart(data: number[], root: string): void{
         .attr('y', d => yScale(d))
         .attr('width', () => barWidth)
         .attr('height', d => height - yScale(d) - margin.top - margin.bottom)
+        .attr('fill', (_, i) => color(domains[i]));
     
     // Appending axes
     svg.append("g")
