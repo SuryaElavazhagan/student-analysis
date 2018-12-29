@@ -1,5 +1,7 @@
 # Student Analytics
 
+## Version 2 is on the way...😎
+
 Instructions:
 
 - `git clone https://github.com/SuryaElavazhagan/StudentAnalytics.git`
