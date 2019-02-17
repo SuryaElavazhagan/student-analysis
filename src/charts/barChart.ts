@@ -1,10 +1,7 @@
 import * as d3 from "d3";
 
-
 export function renderBarChart(data: number[], root: string): void{
-    
     d3.select(`#${root}`).select('svg').remove();
-
     const width = window.innerWidth <= 400 ? window.innerWidth : 400;
     const height = 400;
     

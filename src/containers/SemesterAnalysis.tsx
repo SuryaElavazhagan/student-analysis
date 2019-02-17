@@ -18,36 +18,67 @@ function SemesterAnalysis({ semesterFilter, setCategorizedData }: ISemesterAnaly
     
     async function fetchSemesterMarks() {
         if(!semesterFilter.isLoaded) {
-            const currentSemester = await api.fetchMarks('semester', semesterFilter.semester - 1);
-            
+            const { semester, board, gender, caste } = semesterFilter;
+            const currentSemester = await api.fetchMarks('semester', semester - 1);
+            let boardData: string[] = [];
+            let genderData: string[] = [];
+            let casteData: string[] = [];
+            // let sslcData: number[] = [];
+            // let hscData: number[] = [];
+
+            if(board !== "Both" && board !== "") {
+                boardData = await api.fetchData('board');
+            }
+            if(gender !== "Both" && gender !== "") {
+                genderData = await api.fetchData('gender');
+            }
+            if(caste !== "") {
+                casteData = await api.fetchData("caste");
+            }
+            // if(secondarySchoolFilter !== "") {
+            //     sslcData = await api.fetchMarks("sslc");
+            // }
+            // if(highSchoolFilter !== "") {
+            //     hscData = await api.fetchMarks("hsc");
+            // }
+
             const categorizedData: number[][] = [[], [], [], [], [], [], []];
     
             for (let i = 0; i < currentSemester.length; i++) {
-                if (currentSemester[i] >= 5 && currentSemester[i] < 6) {
+                const boardFilter = boardData.length ? boardData[i].toLowerCase().includes(board.toLowerCase()) : true;
+                const genderFilter = genderData.length ? genderData[i].toLowerCase() === gender.toLowerCase() : true;
+                const casteFilter = casteData.length ? casteData[i].toLowerCase() === caste.toLowerCase() : true;
+
+                const filterCondition = ((boardFilter || board === "Both") &&
+                                        (genderFilter || gender === "Both") &&
+                                        (casteFilter || caste === ""));
+
+                if (currentSemester[i] >= 5 && currentSemester[i] < 6 && filterCondition) {
                     categorizedData[0].push(i);
                 }
-                if (currentSemester[i] >= 6 && currentSemester[i] < 6.5) {
+                else if (currentSemester[i] >= 6 && currentSemester[i] < 6.5 && filterCondition) {
                     categorizedData[1].push(i);
                 }
-                if (currentSemester[i] >= 6.5 && currentSemester[i] < 7) {
+                else if (currentSemester[i] >= 6.5 && currentSemester[i] < 7 && filterCondition) {
                     categorizedData[2].push(i);
                 }
-                if (currentSemester[i] >= 7 && currentSemester[i] < 7.5) {
+                else if (currentSemester[i] >= 7 && currentSemester[i] < 7.5 && filterCondition) {
                     categorizedData[3].push(i);
                 }
-                if (currentSemester[i] >= 7.5 && currentSemester[i] < 8) {
+                else if (currentSemester[i] >= 7.5 && currentSemester[i] < 8 && filterCondition) {
                     categorizedData[4].push(i);
                 }
-                if (currentSemester[i] >= 8 && currentSemester[i] < 8.5) {
+                else if (currentSemester[i] >= 8 && currentSemester[i] < 8.5 && filterCondition) {
                     categorizedData[5].push(i);
                 }
-                if (currentSemester[i] >= 8.5 && currentSemester[i] < 9) {
+                else if (currentSemester[i] >= 8.5 && currentSemester[i] < 9 && filterCondition) {
                     categorizedData[6].push(i);
                 }
             }
             setCategorizedData(categorizedData);
+        } else {
+            renderBarChart(semesterFilter.cachedArray.map(d => d.length), 'chart');
         }
-        renderBarChart(semesterFilter.cachedArray.map(d => d.length), 'chart');
     }
     return(
         <Layout
@@ -71,7 +102,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     setCategorizedData(data: number[][]) {
         dispatch(setCachedArray(0, data));
         dispatch(setDataLoaded(0, true));
-    },
+    }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SemesterAnalysis);

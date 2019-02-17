@@ -18,6 +18,8 @@ export default {
                 break;
             case 'names': currentRange = 'CSE!D2:D118';
                 break;
+            case 'caste': currentRange = 'CSE!H2:H118';
+                break;
         }
         const results: string[][] = await apiCall(currentRange);
         return results.map(name => name[0]);

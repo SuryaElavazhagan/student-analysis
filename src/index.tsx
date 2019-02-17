@@ -11,8 +11,8 @@ import { setClientLoaded } from './store/actions/clientActions';
 dotenv.config();
 
 initiateClient(() => {
-  store.dispatch(setClientLoaded(true))
-})
+  store.dispatch(setClientLoaded(true));
+});
 
 ReactDOM.render(
   <Provider store={ store }>
@@ -22,3 +22,4 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
+

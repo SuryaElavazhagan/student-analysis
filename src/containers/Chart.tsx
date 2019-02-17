@@ -10,8 +10,15 @@ interface IProps {
 }
 
 function Chart({isClientLoaded, isDataLoaded, chartLogic}: IProps) {
-    
-        if(isClientLoaded && !isDataLoaded) {
+        if(isClientLoaded) {
+
+            // If filter is changed, remove the chart to show spinner
+            if(!isDataLoaded) {
+                const root = document.querySelector("svg");
+                if(root) {
+                    root.remove();
+                }
+            }
             chartLogic();
         }
 
