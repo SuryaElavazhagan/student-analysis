@@ -96,6 +96,8 @@ export function ArrearAnalysis() {
 
   useEffect(() => {
     renderChart();
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isStandingArrear, arrearReport]);
 
   return (
