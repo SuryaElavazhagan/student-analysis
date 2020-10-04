@@ -18,11 +18,11 @@
   },
   "scripts": {
     "start": "yarn watch:css && react-scripts start",
-    "build": "yarn build:css && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:css": "postcss src/styles/tailwind.css -o src/styles/main.css",
-    "watch:css": "postcss src/styles/tailwind.css -o src/styles/main.css"
+    "build:css": "postcss ./src/styles/tailwind.css -o ./src/styles/main.css",
+    "watch:css": "postcss ./src/styles/tailwind.css -o ./src/styles/main.css"
   },
   "eslintConfig": {
     "extends": "react-app"

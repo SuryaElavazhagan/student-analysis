@@ -1,5 +1,7 @@
+import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
+
 declare global {
-  interface Window {
+  export interface Window {
     gapi: any;
   }
 }
