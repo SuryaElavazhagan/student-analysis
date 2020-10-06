@@ -111,7 +111,7 @@ export function ArrearAnalysis() {
           onChange={handleStandingArrearSwitch} />
         <span className="ml-2 font-bold">Standing Arrear</span>
       </div>
-      <div id="chart" className="max-w-sm m-3"></div>
+      <div id="chart" className="max-w-sm m-3 w-full"></div>
       {
         loading ? <Sprite name="loading" /> : undefined
       }

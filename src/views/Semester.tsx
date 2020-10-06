@@ -96,7 +96,7 @@ export function Semester() {
           <option value="4">5</option>
         </select>
       </div>
-      <div id="chart" className="max-w-sm m-3"></div>
+      <div id="chart" className="max-w-sm m-3 w-full"></div>
       {
         loading ? <Sprite name="loading" /> : undefined
       }

@@ -83,7 +83,7 @@ export function SchoolAndCollege() {
           }
         </select>
       </div>
-      <div id="chart" className="max-w-sm m-3"></div>
+      <div id="chart" className="max-w-sm m-3 w-full"></div>
       {
         loading ? <Sprite name="loading" /> : undefined
       }

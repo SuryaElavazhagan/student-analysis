@@ -49,7 +49,7 @@ export function Caste() {
   return (
     <div className="flex flex-col items-center lg:w-3/4 xl:w-4/5 rounded overflow-hidden shadow-lg px-6 py-4 m-4">
       <h4 className="text-xl text-center">Caste Analysis</h4>
-      <div id="chart" className="max-w-sm m-3"></div>
+      <div id="chart" className="max-w-sm m-3 w-full"></div>
       {
         loading ? <Sprite name="loading" /> : undefined
       }
